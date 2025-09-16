@@ -1,0 +1,13 @@
+= Generating chart image files using Pyret commandline
+
+Install pyret-npm
+
+  npm i -g pyret-npm
+
+This provides the executable `pyret` which takes a Pyret file as
+argument and runs it.
+
+The file `pyret-chart-image-gen.arr` contains Pyret code that
+reads a CSV table in file `Animals-Dataset-1.5.1.csv`, creates a
+scatter plot, renders it as a image, and stores that image in
+`animal-chart.png`.
