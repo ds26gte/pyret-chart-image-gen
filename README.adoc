@@ -17,3 +17,36 @@ scatter plot, renders it as a image, and stores that image in
 and view the generated image file
 
   animal-chart.png
+
+
+== bash script
+
+`chart-image-gen.sh` is a bash script that allows user to offer
+individual chart requirements as parameters. It takes two
+arguments:
+
+- the first arg is a Pyret string that should put the rendered chart
+in the Pyret variable `rendered`
+- the second arg is the name of the desired image file.
+
+Example:
+
+  chart-image-gen.sh '
+    animals-table =
+      load-table: name, species, sex, age, fixed, legs, pounds, weeks
+      source: csv.csv-table-file("Animals-Dataset-1.5.1.csv", {
+        header-row: true,
+        infer-content: true
+      })
+    end
+    series-1 = VC.from-list.scatter-plot(
+    extract age from animals-table end,
+    extract weeks from animals-table end
+    )
+    rendered = VC.render-charts([list: series-1])
+    ' animal-chart.png
+
+
+
+
+
